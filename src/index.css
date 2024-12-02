@@ -27,10 +27,10 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 h1 {
@@ -81,13 +81,36 @@ button:focus-visible {
   height: 100vh;
   background: var(--express-gray);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
+  overflow: hidden;
+}
+
+.navigation-zones {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 2;
+}
+
+.nav-zone {
+  flex: 1;
+  height: 100%;
+  transition: background-color 0.3s;
+}
+
+.nav-zone-left:hover {
+  background: linear-gradient(to right, rgba(104, 160, 99, 0.1), transparent);
+}
+
+.nav-zone-right:hover {
+  background: linear-gradient(to left, rgba(104, 160, 99, 0.1), transparent);
 }
 
 .slide {
@@ -102,6 +125,7 @@ button:focus-visible {
   position: absolute;
   color: white;
   gap: 2rem;
+  z-index: 1;
 }
 
 .slide h1 {
@@ -120,9 +144,11 @@ button:focus-visible {
 .controls {
   position: fixed;
   bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 1rem;
-  z-index: 100;
+  z-index: 3;
 }
 
 .controls button {
